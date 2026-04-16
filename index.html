@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cassiano Soares | Desenvolvedor Full Stack</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="custom-cursor"></div>
+<div class="cursor-trail"></div>
+<div class="scroll-progress"></div>
+
+<button class="back-to-top" id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<canvas id="particle-canvas"></canvas>
+
+<header>
+  <div class="gradient-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  
+  <div class="profile-wrapper">
+    <div class="profile-glow"></div>
+    <img src="src/imgs/perfil.jpg" alt="Cassiano Soares">
+  </div>
+  
+  <div class="typing-container">
+    <span class="typed-text" id="typed-text"></span>
+    <span class="cursor-blink"></span>
+  </div>
+  
+  <h1>Cassiano Soares</h1>
+  <p class="tagline">Transformando ideias em código | Soluções que fazem a diferença</p>
+  
+  <div class="button-group">
+  <button class="btn btn-primary" onclick="scrollToProjects()">
+    <i class="fas fa-arrow-down"></i> Ver Projetos
+  </button>
+  <button class="btn btn-outline" onclick="scrollToContact()">
+    <i class="fas fa-envelope"></i> Contato
+  </button>
+  <button class="btn btn-primary" id="btn-instalar-curriculo">
+    <i class="fas fa-download"></i> Instalar Currículo
+  </button>
+</div>
+
+<!-- Modal de Instalação (FORA do header, antes do fechamento do body) -->
+<div class="install-modal" id="installModal">
+  <div class="install-content">
+    <div class="install-header">
+      <i class="fas fa-terminal"></i>
+      <span>Instalando Currículo.exe</span>
+      <button class="install-close" onclick="closeInstallModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="terminal-output" id="terminalOutput">
+      <div class="terminal-line">
+        <span class="prompt">></span> Iniciando instalação do Currículo_v2.6.exe...
+      </div>
+    </div>
+    
+    <div class="install-progress-container">
+      <div class="install-progress-bar" id="installProgressBar"></div>
+      <div class="install-progress-text" id="installProgressText">0%</div>
+    </div>
+    
+    <div class="install-status" id="installStatus">
+      <i class="fas fa-spinner fa-spin"></i> Preparando instalação...
+    </div>
+    
+    <div class="file-list" id="fileList"></div>
+  </div>
+</div>
+</header>
+
+<section id="projects">
+  <h2 class="section-title fade-up">Projetos em Destaque</h2>
+  
+  <div class="project-card fade-up">
+    <div class="gallery-container">
+      <div class="gallery" data-gallery="0">
+        <button class="gallery-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="gallery-track">
+          <img src="src/imgs/DG.png" alt="DG Consultoria - Dashboard">
+          <img src="src/imgs/DGCB.png" alt="DG Consultoria - Cursos">
+          <img src="src/imgs/DGCUB.png" alt="DG Consultoria - Certificados">
+          <img src="src/imgs/DGLB.png" alt="DG Consultoria - Login">
+          <img src="src/imgs/DGP.png" alt="DG Consultoria - Produtos">
+          <img src="src/imgs/DGCP.png" alt="DG Consultoria - Carrinho">
+          <img src="src/imgs/DGCUP.png" alt="DG Consultoria - Checkout">
+          <img src="src/imgs/DGLP.png" alt="DG Consultoria - Landing Page">
+        </div>
+        <button class="gallery-btn next"><i class="fas fa-chevron-right"></i></button>
+        <div class="gallery-dots"></div>
+      </div>
+    </div>
+    <div class="project-content">
+      <h2>DG Consultoria</h2>
+      <div class="tech-tags">
+        <span class="tech-tag">PHP</span>
+        <span class="tech-tag">Laravel</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">Stripe</span>
+      </div>
+      <p>Sistema completo de EAD para venda de cursos online na área de segurança do trabalho. Plataforma com catálogo dinâmico, processamento de pagamentos integrado, envio automático de credenciais e painel administrativo completo para gestão de alunos e conteúdos.</p>
+      <a href="https://dgconsultoriasst.com/" target="_blank" class="project-link">
+        <span>Acessar Projeto</span> <i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="project-card reverse fade-up">
+    <div class="gallery-container">
+      <div class="gallery" data-gallery="1">
+        <button class="gallery-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="gallery-track">
+          <img src="src/imgs/TCC.png" alt="AutoAbout - Editor Visual">
+          <img src="src/imgs/tcc1.png" alt="AutoAbout - Fluxos">
+          <img src="src/imgs/tcc2.png" alt="AutoAbout - Chatbot">
+          <img src="src/imgs/tcc3.png" alt="AutoAbout - Analytics">
+        </div>
+        <button class="gallery-btn next"><i class="fas fa-chevron-right"></i></button>
+        <div class="gallery-dots"></div>
+      </div>
+    </div>
+    <div class="project-content">
+      <h2>AutoAbout</h2>
+      <div class="tech-tags">
+        <span class="tech-tag">Javascript</span>
+        <span class="tech-tag">API Whatsapp</span>
+        <span class="tech-tag">API Gemini</span>
+        <span class="tech-tag">TypeScript</span>
+      </div>
+      <p>Plataforma inovadora para criação de chatbots com interface visual baseada em blocos (no-code). Permite que usuários sem conhecimento técnico construam fluxos de conversa complexos, integrando IA para respostas inteligentes e personalizáveis. Ideal para atendimento ao cliente, assistentes virtuais e automação de vendas.</p>
+    </div>
+  </div>
+</section>
+<section id="skills">
+  <h2 class="section-title fade-up">Stack Tecnológico</h2>
+  <div class="skills-container">
+    <div class="skill-item">
+      <div class="skill-header">
+        <i class="fab fa-js"></i>
+        <span>JavaScript/TypeScript</span>
+        <span class="skill-percent">90%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="90"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-header">
+        <i class="fab fa-python"></i>
+        <span>Python</span>
+        <span class="skill-percent">90%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="90"></div>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-header">
+        <i class="fab fa-php"></i>
+        <span>PHP/Laravel</span>
+        <span class="skill-percent">85%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="85"></div>
+      </div>
+    </div>
+    
+    <div class="skill-item">
+      <div class="skill-header">
+        <i class="fas fa-database"></i>
+        <span>MySQL/PostgreSQL</span>
+        <span class="skill-percent">80%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="80"></div>
+      </div>
+    </div>
+    
+    <div class="skill-item">
+      <div class="skill-header">
+        <i class="fab fa-react"></i>
+        <span>React/Vue.js</span>
+        <span class="skill-percent">75%</span>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-progress" data-width="75"></div>
+      </div>
+    </div>
+<!-- Sistema de Notas do Recrutador -->
+<div class="recruiter-notes-container">
+  <button class="notes-toggle-btn" id="notesToggleBtn">
+    <i class="fas fa-pen"></i>
+    <span>Notas do Recrutador</span>
+    <span class="notes-badge" id="notesBadge">0</span>
+  </button>
+  
+  <div class="notes-panel" id="notesPanel">
+    <div class="notes-header">
+      <h3>
+        <i class="fas fa-clipboard-list"></i>
+        Notas do Recrutador
+      </h3>
+      <button class="notes-close" id="notesClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="notes-tabs">
+      <button class="tab-btn active" data-tab="write">
+        <i class="fas fa-pencil-alt"></i> Nova Nota
+      </button>
+      <button class="tab-btn" data-tab="history">
+        <i class="fas fa-list"></i> Notas Salvas
+      </button>
+    </div>
+    
+    <div class="tab-content active" id="writeTab">
+      <div class="notes-candidate-info">
+        <img src="src/imgs/perfil.jpg" alt="Cassiano" class="notes-avatar">
+        <div>
+          <h4>Cassiano Soares</h4>
+          <p>Desenvolvedor Full Stack</p>
+        </div>
+      </div>
+      
+      <div class="rating-system">
+        <span>Avaliação:</span>
+        <div class="stars" id="ratingStars">
+          <i class="far fa-star" data-rating="1"></i>
+          <i class="far fa-star" data-rating="2"></i>
+          <i class="far fa-star" data-rating="3"></i>
+          <i class="far fa-star" data-rating="4"></i>
+          <i class="far fa-star" data-rating="5"></i>
+        </div>
+      </div>
+      
+      <div class="notes-form">
+        <label for="noteCategory">Categoria:</label>
+        <select id="noteCategory">
+          <option value="technical">Habilidades Técnicas</option>
+          <option value="soft">Soft Skills</option>
+          <option value="experience">Experiência</option>
+          <option value="portfolio">Portfólio</option>
+          <option value="other">Outro</option>
+        </select>
+        
+        <label for="noteTitle">Título:</label>
+        <input type="text" id="noteTitle" placeholder="Ex: Destaque em PHP" maxlength="50">
+        
+        <label for="noteContent">Nota:</label>
+        <textarea id="noteContent" placeholder="Escreva suas observações sobre o candidato..." rows="5"></textarea>
+        
+        <div class="notes-buttons">
+          <button class="btn-save-note" id="saveNoteBtn">
+            <i class="fas fa-save"></i> Salvar Nota
+          </button>
+          <button class="btn-clear-note" id="clearNoteBtn">
+            <i class="fas fa-eraser"></i> Limpar
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tab-content" id="historyTab">
+      <div class="notes-filters">
+        <select id="filterCategory">
+          <option value="all">Todas categorias</option>
+          <option value="technical">Habilidades Técnicas</option>
+          <option value="soft">Soft Skills</option>
+          <option value="experience">Experiência</option>
+          <option value="portfolio">Portfólio</option>
+          <option value="other">Outro</option>
+        </select>
+        <select id="sortNotes">
+          <option value="newest">Mais recentes</option>
+          <option value="oldest">Mais antigas</option>
+          <option value="rating">Melhor avaliação</option>
+        </select>
+      </div>
+      
+      <div class="notes-list" id="notesList">
+        <!-- Notas serão carregadas aqui -->
+      </div>
+    </div>
+    
+    <div class="notes-footer">
+      <span class="notes-stats" id="notesStats">
+        <i class="fas fa-save"></i> 
+        <span id="totalNotes">0</span> notas salvas localmente
+      </span>
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+  <h2 class="fade-up">Vamos Criar Algo Incrível?</h2>
+  <p class="fade-up">Entre em contato e vamos conversar sobre seu próximo projeto</p>
+  <div class="contact-links fade-up">
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=cassiano.soares156@gmail.com" target="_blank">
+      <i class="fas fa-envelope"></i> Email
+    </a>
+    <a href="https://www.linkedin.com/in/cassiano-brandes-soares/" target="_blank">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://github.com/Cassian0S0ares" target="_blank">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+    <a href="https://wa.me/5512991364115" target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+  <div class="copyright fade-up">
+    <p>&copy; 2026 Cassiano Soares. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-img" id="lightbox-img" alt="Visualização ampliada">
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
