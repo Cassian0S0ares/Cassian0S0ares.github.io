@@ -957,14 +957,13 @@ function placeBubbles(filterCat) {
   
   const nodes = visible.map(t => ({
     ...t,
-    radius: 25 + (t.level / 100) * 22, // 18 a 40px
+   radius: 18 + (t.level / 100) * 15,
 
   }));
 
   const simulation = d3.forceSimulation(nodes)
     .force("center", d3.forceCenter(width / 2, height / 2))
     .force("charge", d3.forceManyBody().strength(-20))
-
     .force("collision", d3.forceCollide().radius(d => d.radius + 4))
     .force("x", d3.forceX(width / 2).strength(0.05))
     .force("y", d3.forceY(height / 2).strength(0.05))
@@ -985,31 +984,24 @@ function placeBubbles(filterCat) {
     .style("align-items", "center")
     .style("justify-content", "center")
     .style("cursor", "grab")
-.style("box-shadow", d => `0 0 20px ${categoryColors[d.cat]}`)
-.style("border", d => `1px solid ${categoryColors[d.cat]}`)
-.style("background", d => categoryColors[d.cat] + "33") // transparência
-.style("backdrop-filter", "blur(10px)")
+    .style("box-shadow", d => `0 0 20px ${categoryColors[d.cat]}`)
+    .style("border", d => `1px solid ${categoryColors[d.cat]}`)
+    .style("background", d => categoryColors[d.cat] + "33")
+    .style("backdrop-filter", "blur(10px)")
     .html(d => `
-  <div style="display:flex; flex-direction:column; align-items:center;">
-    
-    <img 
-      src="${d.icon}" 
-      alt="${d.label}" 
-      style="width:28px; height:28px; object-fit:contain;"
-    />
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <img 
+          src="${d.icon}" 
+          alt="${d.label}" 
+          style="width:28px; height:28px; object-fit:contain;"
+        />
+        <span style="font-size:10px; margin-top:2px; color:#fff;">
+          ${d.level}%
+        </span>
+      </div>
+    `);
 
-    <span style="
-      font-size:10px;
-      margin-top:2px;
-      color:#fff;
-    ">
-      ${d.level}%
-    </span>
-
-  </div>
-`);
-
-  // 🔥 DRAG (ARRASTAR)
+  // DRAG (arrastar)
   bubbles.call(
     d3.drag()
       .on("start", (event, d) => {
@@ -1028,19 +1020,69 @@ function placeBubbles(filterCat) {
       })
   );
 
-  // 🔥 LOOP DA FÍSICA
-simulation.on("tick", () => {
-
-  nodes.forEach(d => {
-    // limites da arena (com margem de segurança)
-    d.x = Math.max(d.radius, Math.min(width - d.radius, d.x));
-    d.y = Math.max(d.radius, Math.min(height - d.radius, d.y));
-  });
-
+  // ⭐⭐⭐ EVENTO DE CLIQUE – AGORA NO LUGAR CORRETO ⭐⭐⭐
   bubbles
-    .style("left", d => (d.x - d.radius) + "px")
-    .style("top", d => (d.y - d.radius) + "px");
-});
+    .style("cursor", "pointer")
+    .on("click", function(event, d) {
+      // Remove destaque de todas as bolhas
+      arena.querySelectorAll('.bubble').forEach(b => b.classList.remove('active', 'dimmed'));
+      
+      // Destaca a bolha clicada
+      this.classList.add('active');
+      
+      // Obtém categoria e painel
+      const cat = CATS[d.cat];
+      const panel = document.getElementById('detailPanel');
+      
+      // Preenche ícone
+      const dotDiv = document.getElementById('detailDot');
+      dotDiv.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = d.icon;
+      img.alt = d.label;
+      img.style.width = '32px';
+      img.style.height = '32px';
+      img.style.objectFit = 'contain';
+      dotDiv.appendChild(img);
+      dotDiv.style.background = cat.bg;
+      dotDiv.style.border = `1px solid ${cat.color}55`;
+      
+      // Nome e nível
+      document.getElementById('detailName').textContent = d.label;
+      document.getElementById('detailCat').textContent = `${cat.label} · ${d.level}% de domínio`;
+      
+      // Projetos
+      const projectsContainer = document.getElementById('detailProjects');
+      projectsContainer.innerHTML = '';
+      if (d.projects && d.projects.length > 0) {
+        d.projects.forEach(pid => {
+          const proj = PROJECTS[pid];
+          if (proj) {
+            const chip = document.createElement('div');
+            chip.className = 'proj-chip';
+            chip.innerHTML = `<span class="proj-dot" style="background:${proj.color}"></span>${proj.name}`;
+            projectsContainer.appendChild(chip);
+          }
+        });
+      } else {
+        projectsContainer.innerHTML = '<span style="font-size:12px;color:var(--color-text-secondary)">Nenhum projeto listado</span>';
+      }
+      
+      // Exibe o painel
+      panel.classList.add('show');
+    });
+
+  // LOOP DA FÍSICA
+  simulation.on("tick", () => {
+    nodes.forEach(d => {
+      d.x = Math.max(d.radius, Math.min(width - d.radius, d.x));
+      d.y = Math.max(d.radius, Math.min(height - d.radius, d.y));
+    });
+
+    bubbles
+      .style("left", d => (d.x - d.radius) + "px")
+      .style("top", d => (d.y - d.radius) + "px");
+  });
 }
 function showDetail(tech, el, cat) {
   const allBubbles = arena.querySelectorAll('.bubble');
@@ -1112,95 +1154,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.notesSystem = new RecruiterNotesSystem();
 });
 const details = document.getElementById("tech-details");
-
-bubbles
-  .style("cursor", "pointer") // muda cursor
-
-  .on("click", (event, d) => {
-
-    const projectsHTML = d.projects.map(pid => {
-      const p = PROJECTS[pid];
-
-      return `
-        <div class="project-item">
-          🔹 ${p.name}
-        </div>
-      `;
-    }).join('');
-
-    details.innerHTML = `
-      <h2>${d.label}</h2>
-
-      <p><strong>Área:</strong> ${d.cat}</p>
-      <p><strong>Nível:</strong> ${d.level}%</p>
-
-      <div style="margin-top:15px;">
-        <strong>Onde usei:</strong>
-        ${projectsHTML || 'Nenhum projeto ainda'}
-      </div>
-    `;
-  });
-
-const skillsData = {
-  html: {
-    nome: "HTML",
-    area: "Frontend",
-    porcentagem: "90%",
-    projetos: "Portfólio, Landing Pages"
-  },
-  css: {
-    nome: "CSS",
-    area: "Frontend",
-    porcentagem: "85%",
-    projetos: "Portfólio, UI Animada"
-  },
-  js: {
-    nome: "JavaScript",
-    area: "Frontend",
-    porcentagem: "80%",
-    projetos: "Sistema de notas, animações"
-  }
-};
-
-const balls = document.querySelectorAll(".ball");
-const info = document.getElementById("skillInfo");
-
-balls.forEach(ball => {
-  ball.addEventListener("click", () => {
-
-    // remover ativo
-    balls.forEach(b => b.classList.remove("active"));
-
-    // ativar clicado
-    ball.classList.add("active");
-
-    const skill = ball.dataset.skill;
-    const data = skillsData[skill];
-
-    info.innerHTML = `
-      <h3>${data.nome}</h3>
-      <p><strong>Área:</strong> ${data.area}</p>
-      <p><strong>Nível:</strong> ${data.porcentagem}</p>
-      <p><strong>Projetos:</strong> ${data.projetos}</p>
-    `;
-  });
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    const activeFilter = document.querySelector('.filter-btn.active')?.dataset.cat || 'all';
+    placeBubbles(activeFilter);
+  }, 150);
 });
-function showTechProjects(techId) {
-  const container = document.getElementById("detailProjects");
-  const projects = techProjectsMap[techId];
-
-  if (!projects || projects.length === 0) {
-    container.innerHTML = "<p>Nenhum projeto encontrado</p>";
-    return;
-  }
-
-  container.innerHTML = projects
-    .map(
-      (proj) => `
-        <a href="${proj.link}" target="_blank" class="project-item">
-          🚀 ${proj.name}
-        </a>
-      `
-    )
-    .join("");
-}

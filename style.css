@@ -2275,8 +2275,8 @@ footer h2 {
     z-index: 1;
   }
 
-  .tl-item:first-child { padding-left: 0; }
-  .tl-item:last-child { padding-right: 0; }
+  .tl-item:first-child { padding-left: 8px; }
+  .tl-item:last-child { padding-right: 8px; }
 
   .tl-dot-wrapper {
     width: 100%;
@@ -2693,4 +2693,70 @@ footer h2 {
   background: rgba(255,255,255,0.03);
   padding: 15px;
   border-radius: 10px;
+}
+.detail-panel {
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.detail-panel.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Ajustes mobile para a arena de bolhas */
+@media (max-width: 768px) {
+  .arena {
+    height: 350px; /* Reduz altura para caber melhor */
+    margin: 0 -5%; /* Compensa padding da section em telas pequenas */
+    width: 110%; /* Aumenta um pouco a largura para aproveitar espaço */
+    border-radius: 16px;
+  }
+  
+  /* Aumenta um pouco o tamanho mínimo das bolhas no mobile */
+  .bubble {
+    min-width: 60px !important;
+    min-height: 60px !important;
+  }
+  
+  /* Ajusta o tamanho da fonte do percentual */
+  .bubble span {
+    font-size: 9px !important;
+  }
+  
+  /* Painel de detalhes mais compacto */
+  .detail-panel {
+    padding: 0.8rem 1rem;
+    margin-top: 15px;
+  }
+  
+  .detail-dot {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .detail-name {
+    font-size: 14px;
+  }
+  
+  .detail-cat {
+    font-size: 11px;
+  }
+  
+  .proj-chip {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .arena {
+    height: 300px;
+  }
+  
+  .bubble {
+    min-width: 50px !important;
+    min-height: 50px !important;
+  }
 }
