@@ -2275,8 +2275,8 @@ footer h2 {
     z-index: 1;
   }
 
-  .tl-item:first-child { padding-left: 8px; }
-  .tl-item:last-child { padding-right: 8px; }
+  .tl-item:first-child { padding-left: 12px; }
+  .tl-item:last-child { padding-right: 12px; }
 
   .tl-dot-wrapper {
     width: 100%;
