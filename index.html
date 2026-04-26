@@ -214,7 +214,6 @@
             <div class="detail-cat" id="detailCat"></div>
             <div class="detail-projects" id="detailProjects"></div>
             <div id="tech-details">
-              <p>Clique em uma tecnologia</p>
             </div>
           </div>
         </div>
@@ -223,6 +222,85 @@
       <!-- Sistema de Notas do Recrutador -->
       
   </section>
+  <section id="certificates">
+  <h2 class="section-title fade-up">Certificados</h2>
+  <div class="certs-grid">
+    <div class="cert-card fade-up">
+      <div class="cert-icon-wrap" style="background: rgba(0,114,239,0.1); border-color: rgba(0,114,239,0.2);">
+        <img src="https://logo.svgcdn.com/logos/microsoft.svg" alt="Microsoft" />
+      </div>
+      <div class="cert-body">
+        <span class="cert-tag tag-infra">Infra & Cloud</span>
+        <h3>Fundamentos de Segurança em Nuvem</h3>
+        <p class="cert-sub">Microsoft SC-900</p>
+        <div class="cert-footer">
+          <span class="cert-inst"><i class="fab fa-microsoft"></i> Microsoft</span>
+          <span class="cert-year">2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-icon-wrap" style="background: rgba(66,133,244,0.1); border-color: rgba(66,133,244,0.2);">
+        <img src="https://logo.svgcdn.com/logos/google.svg" alt="Google" />
+      </div>
+      <div class="cert-body">
+        <span class="cert-tag tag-infra">Infra & Cloud</span>
+        <h3>Implantação de Serviços em Nuvem</h3>
+        <p class="cert-sub">Google Cloud Foundations</p>
+        <div class="cert-footer">
+          <span class="cert-inst"><i class="fab fa-google"></i> Google</span>
+          <span class="cert-year">2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-icon-wrap" style="background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.2);">
+        <img src="https://logo.svgcdn.com/logos/power-bi.svg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg'" alt="Power BI" />
+      </div>
+      <div class="cert-body">
+        <span class="cert-tag tag-data">Dados</span>
+        <h3>Power BI</h3>
+        <p class="cert-sub">Inteligência de Negócios e Painéis (Dashboards)</p>
+        <div class="cert-footer">
+          <span class="cert-inst"><i class="fas fa-graduation-cap"></i> SENAI</span>
+          <span class="cert-year">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-icon-wrap" style="background: rgba(18,110,196,0.1); border-color: rgba(18,110,196,0.2);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/1280px-Cisco_logo_blue_2016.svg.png" alt="Cisco" />
+      </div>
+      <div class="cert-body">
+        <span class="cert-tag tag-infra">Redes</span>
+        <h3>CCNA — Introdução ao Networking</h3>
+        <p class="cert-sub">Cisco Networking Academy</p>
+        <div class="cert-footer">
+          <span class="cert-inst"><i class="fas fa-network-wired"></i> Cisco</span>
+          <span class="cert-year">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-icon-wrap" style="background: rgba(255,194,32,0.1); border-color: rgba(255,194,32,0.2);">
+        <img src="https://logo.svgcdn.com/logos/linux-tux.svg" alt="Linux" />
+      </div>
+      <div class="cert-body">
+        <span class="cert-tag tag-infra">Infra</span>
+        <h3>Linux Unhatched</h3>
+        <p class="cert-sub">Fundamentos de Linux</p>
+        <div class="cert-footer">
+          <span class="cert-inst"><i class="fas fa-network-wired"></i> Cisco</span>
+          <span class="cert-year">2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   <footer id="contact">
     <h2 class="fade-up">Vamos Criar Algo Incrível?</h2>
     <p class="fade-up">Entre em contato e vamos conversar sobre seu próximo projeto</p>
@@ -341,6 +419,21 @@
         </div>
       </div>
     </div>
+    <div class="lang-switcher" id="langSwitcher">
+  <button class="lang-btn active" id="langBtn" onclick="toggleLang()">
+    <span class="lang-flag" id="langFlag">🇧🇷</span>
+    <span class="lang-label" id="langLabel">PT</span>
+    <i class="fas fa-chevron-down lang-arrow" id="langArrow"></i>
+  </button>
+  <div class="lang-dropdown" id="langDropdown">
+    <button class="lang-option active" data-lang="pt" onclick="setLang('pt')">
+      <span>🇧🇷</span> Português
+    </button>
+    <button class="lang-option" data-lang="en" onclick="setLang('en')">
+      <span>🇺🇸</span> English
+    </button>
+  </div>
+</div>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="script.js"></script>
 </body>
