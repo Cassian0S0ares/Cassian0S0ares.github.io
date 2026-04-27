@@ -902,7 +902,6 @@ const translations = {
     certs: [
       { tag: "Infra & Cloud", title: "Fundamentos de Segurança em Nuvem", sub: "Microsoft SC-900", inst: "Microsoft" },
       { tag: "Infra & Cloud", title: "Implantação de Serviços em Nuvem", sub: "Google Cloud Foundations", inst: "Google" },
-      { tag: "Educação", title: "Técnico em Análise e Desenvolvimento de Sistemas", sub: "Curso Técnico Completo", inst: "SENAI" },
       { tag: "Dados", title: "Power BI", sub: "Business Intelligence & Dashboards", inst: "SENAI" },
       { tag: "Redes", title: "CCNA — Introdução ao Networking", sub: "Cisco Networking Academy", inst: "Cisco" },
       { tag: "Infra", title: "Linux Unhatched", sub: "Fundamentos de Linux", inst: "Cisco" },
@@ -988,7 +987,6 @@ const translations = {
     certs: [
       { tag: "Infra & Cloud", title: "Cloud Security Fundamentals", sub: "Microsoft SC-900", inst: "Microsoft" },
       { tag: "Infra & Cloud", title: "Cloud Services Deployment", sub: "Google Cloud Foundations", inst: "Google" },
-      { tag: "Education", title: "Systems Development & Analysis Technician", sub: "Full Technical Degree", inst: "SENAI" },
       { tag: "Data", title: "Power BI", sub: "Business Intelligence & Dashboards", inst: "SENAI" },
       { tag: "Networking", title: "CCNA — Introduction to Networking", sub: "Cisco Networking Academy", inst: "Cisco" },
       { tag: "Infra", title: "Linux Unhatched", sub: "Linux Fundamentals", inst: "Cisco" },
