@@ -547,7 +547,8 @@ const eventsData = {
     { year: '2025', role: 'Conclusão do curso técnico', place: 'SENAI Cruzeiro', badge: 'Educação', badgeClass: 'badge-edu', title: 'Técnico em ADS concluído', sub: 'SENAI · 2025', desc: 'Conclusão do curso técnico em ADS com desenvolvimento de projetos práticos e consolidação de conhecimentos em desenvolvimento full stack.', tags: ['PHP', 'MySQL', 'Laravel', 'JavaScript'] },
     { year: '2025', role: 'TCC', place: 'Projeto acadêmico', badge: 'TCC', badgeClass: 'badge-edu', title: 'AutoAbout · TCC', sub: 'Full Stack + IA · 2025', desc: 'Desenvolvimento de uma plataforma no-code para criação de chatbots com editor visual, integração com API do WhatsApp e uso de IA para automação de atendimento.', tags: ['TypeScript', 'Node.js', 'WhatsApp API', 'IA'] },
     { year: '2026', role: 'Início da graduação em ADS', place: 'SENAI', badge: 'Educação', badgeClass: 'badge-edu', title: 'Graduação em ADS', sub: 'SENAI · 2026', desc: 'Início da graduação em Análise e Desenvolvimento de Sistemas, aprofundando conhecimentos em arquitetura de software, engenharia de sistemas e desenvolvimento escalável.', tags: ['Engenharia de Software', 'Arquitetura', 'Full Stack'] },
-    { year: '2026', role: 'DG Consultoria', place: 'Projeto profissional', badge: 'Trabalho', badgeClass: 'badge-work', title: 'DG Consultoria SST', sub: 'Desenvolvedor Full Stack · 2026', desc: 'Desenvolvimento de uma plataforma EAD completa com catálogo de cursos, integração de pagamentos e painel administrativo.', tags: ['Laravel', 'MySQL', 'Stripe', 'Vue.js'] }
+    { year: '2026', role: 'DG Consultoria', place: 'Projeto profissional', badge: 'Trabalho', badgeClass: 'badge-work', title: 'DG Consultoria SST', sub: 'Desenvolvedor Full Stack · 2026', desc: 'Desenvolvimento de uma plataforma EAD completa com catálogo de cursos, integração de pagamentos e painel administrativo.', tags: ['Laravel', 'MySQL', 'Stripe', 'Vue.js'] },
+    { year: '2026', role: 'Estágio em Desenvolvimento', place: 'Imex Solutions', badge: 'Estágio', badgeClass: 'badge-stage', title: 'Sistema de Gestão de Válvulas', sub: 'Estagiário Full Stack · 2026', desc: 'Estágio na Imex Solutions, empresa do setor de válvulas industriais. Desenvolvimento de um sistema em Django para gerenciamento de válvulas, com geração automatizada de código de identificação (tag) e criação automática de folha de dados técnica (datasheet). Também responsável pelo gerenciamento e manutenção do servidor VPS de produção.', tags: ['Django', 'Python', 'VPS', 'Linux', 'Automação'] }
   ],
   en: [
     { year: '2022', role: 'FLL (FIRST LEGO League) Participant', place: 'SESI / Robotics Team', badge: 'Experience', badgeClass: 'badge-exp', title: 'FLL Robotics Competition', sub: 'FIRST LEGO League · 2023', desc: 'Participated in the FIRST LEGO League competition, developing robotics and programming solutions as a team. Worked on building and programming the LEGO robot, collaborated on research and presentation of innovative projects, building skills in teamwork, problem-solving, and logical thinking.', tags: ['Robotics', 'Programming', 'Teamwork', 'Logic'] },
@@ -555,7 +556,8 @@ const eventsData = {
     { year: '2025', role: 'Completed technical course', place: 'SENAI Cruzeiro', badge: 'Education', badgeClass: 'badge-edu', title: 'Technical Degree completed', sub: 'SENAI · 2025', desc: 'Completed the technical program in SDA with hands-on project development and consolidation of full stack development knowledge.', tags: ['PHP', 'MySQL', 'Laravel', 'JavaScript'] },
     { year: '2025', role: 'Capstone Project', place: 'Academic project', badge: 'Capstone', badgeClass: 'badge-edu', title: 'AutoAbout · Capstone', sub: 'Full Stack + AI · 2025', desc: 'Built a no-code platform for creating chatbots with a visual editor, WhatsApp API integration, and AI-powered automation for customer service.', tags: ['TypeScript', 'Node.js', 'WhatsApp API', 'AI'] },
     { year: '2026', role: "Started Bachelor's degree in SDA", place: 'SENAI', badge: 'Education', badgeClass: 'badge-edu', title: "Bachelor's in SDA", sub: 'SENAI · 2026', desc: "Started the bachelor's degree in Systems Development and Analysis, deepening knowledge in software architecture, systems engineering, and scalable development.", tags: ['Software Engineering', 'Architecture', 'Full Stack'] },
-    { year: '2026', role: 'DG Consultoria', place: 'Professional project', badge: 'Work', badgeClass: 'badge-work', title: 'DG Consultoria SST', sub: 'Full Stack Developer · 2026', desc: 'Built a complete e-learning platform with a course catalog, payment integration, and an admin panel for managing students and content.', tags: ['Laravel', 'MySQL', 'Stripe', 'Vue.js'] }
+    { year: '2026', role: 'DG Consultoria', place: 'Professional project', badge: 'Work', badgeClass: 'badge-work', title: 'DG Consultoria SST', sub: 'Full Stack Developer · 2026', desc: 'Built a complete e-learning platform with a course catalog, payment integration, and an admin panel for managing students and content.', tags: ['Laravel', 'MySQL', 'Stripe', 'Vue.js'] },
+    { year: '2026', role: 'Development Internship', place: 'Imex Solutions', badge: 'Internship', badgeClass: 'badge-stage', title: 'Valve Management System', sub: 'Full Stack Intern · 2026', desc: 'Internship at Imex Solutions, a company in the industrial valve sector. Building a Django system for valve management, with automated tag/code generation and automated technical datasheet creation. Also responsible for managing and maintaining the production VPS server.', tags: ['Django', 'Python', 'VPS', 'Linux', 'Automation'] }
   ]
 };
 
@@ -666,29 +668,30 @@ const PROJECTS = {
   auto: { name: 'AutoAbout',      color: '#8b5cf6' },
   free: { name: 'Freelances',     color: '#10b981' },
   tcc:  { name: 'TCC / Pessoal',  color: '#f59e0b' },
+  imex: { name: 'Imex Solutions', color: '#ec4899' },
 };
 
 const techs = [
-  { id:'php',     label:'PHP',          icon:'https://logo.svgcdn.com/logos/php.svg',           cat:'backend',  level:85, projects:['dg','free'] },
-  { id:'laravel', label:'Laravel',      icon:'https://logo.svgcdn.com/logos/laravel.svg',        cat:'backend',  level:85, projects:['dg'] },
-  { id:'python',  label:'Python',       icon:'https://logo.svgcdn.com/logos/python.svg',         cat:'backend',  level:90, projects:['tcc','free'] },
-  { id:'node',    label:'Node.js',      icon:'https://logo.svgcdn.com/logos/nodejs.svg',         cat:'backend',  level:78, projects:['auto','tcc'] },
-  { id:'ts',      label:'TypeScript',   icon:'https://logo.svgcdn.com/logos/typescript.svg',     cat:'frontend', level:80, projects:['auto'] },
-  { id:'js',      label:'JavaScript',   icon:'https://logo.svgcdn.com/logos/javascript.svg',     cat:'frontend', level:90, projects:['dg','auto','free','tcc'] },
-  { id:'react',   label:'React',        icon:'https://logo.svgcdn.com/logos/react.svg',          cat:'frontend', level:75, projects:['free','tcc'] },
-  { id:'vue',     label:'Vue.js',       icon:'https://icon-icons.com/download-file?file=https%3A%2F%2Fimages.icon-icons.com%2F2415%2FPNG%2F512%2Fvuejs_original_wordmark_logo_icon_146305.png&id=146305&pack_or_individual=pack', cat:'frontend', level:72, projects:['dg'] },
+  { id:'php',     label:'PHP',          icon:'https://cdn.simpleicons.org/php/777BB4',           cat:'backend',  level:85, projects:['dg','free'] },
+  { id:'laravel', label:'Laravel',      icon:'https://cdn.simpleicons.org/laravel/FF2D20',        cat:'backend',  level:85, projects:['dg'] },
+  { id:'python',  label:'Python',       icon:'https://cdn.simpleicons.org/python/3776AB',         cat:'backend',  level:90, projects:['tcc','free','imex'] },
+  { id:'node',    label:'Node.js',      icon:'https://cdn.simpleicons.org/nodedotjs/5FA04E',       cat:'backend',  level:78, projects:['auto','tcc'] },
+  { id:'ts',      label:'TypeScript',   icon:'https://cdn.simpleicons.org/typescript/3178C6',      cat:'frontend', level:80, projects:['auto'] },
+  { id:'js',      label:'JavaScript',   icon:'https://cdn.simpleicons.org/javascript/F7DF1E',      cat:'frontend', level:90, projects:['dg','auto','free','tcc'] },
+  { id:'react',   label:'React',        icon:'https://cdn.simpleicons.org/react/61DAFB',          cat:'frontend', level:75, projects:['free','tcc'] },
+  { id:'vue',     label:'Vue.js',       icon:'https://cdn.simpleicons.org/vuedotjs/4FC08D', cat:'frontend', level:72, projects:['dg'] },
   { id:'css',     label:'CSS/Tailwind', icon:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1920px-CSS3_logo_and_wordmark.svg.png', cat:'frontend', level:85, projects:['dg','auto','free','tcc'] },
-  { id:'mysql',   label:'MySQL',        icon:'https://logo.svgcdn.com/logos/mysql.svg',          cat:'db',       level:80, projects:['dg','free'] },
-  { id:'pg',      label:'PostgreSQL',   icon:'https://logo.svgcdn.com/logos/postgresql.svg',     cat:'db',       level:70, projects:['tcc'] },
-  { id:'stripe',  label:'Stripe',       icon:'https://logo.svgcdn.com/logos/stripe.svg',         cat:'infra',    level:75, projects:['dg'] },
+  { id:'mysql',   label:'MySQL',        icon:'https://cdn.simpleicons.org/mysql/4479A1',          cat:'db',       level:80, projects:['dg','free'] },
+  { id:'pg',      label:'PostgreSQL',   icon:'https://cdn.simpleicons.org/postgresql/4169E1',     cat:'db',       level:70, projects:['tcc'] },
+  { id:'stripe',  label:'Stripe',       icon:'https://cdn.simpleicons.org/stripe/635BFF',         cat:'infra',    level:75, projects:['dg'] },
   { id:'gemini',  label:'Gemini AI',    icon:'https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/3/google-gemini-924j3051o55m98g4rwehj.png/google-gemini-fjwerd7ldxwt4c010vyoh.png?_a=DATAiZAAZAA0', cat:'infra', level:72, projects:['auto'] },
-  { id:'wp',      label:'WhatsApp API', icon:'https://logo.svgcdn.com/logos/whatsapp.svg',       cat:'infra',    level:70, projects:['auto'] },
-  { id:'aws',     label:'AWS',          icon:'https://logo.svgcdn.com/logos/aws.svg',            cat:'db',       level:65, projects:['aula'] },
-  { id:'docker',  label:'Docker',       icon:'https://logo.svgcdn.com/logos/docker.svg',         cat:'infra',    level:68, projects:['dg','tcc'] },
-  { id:'html',    label:'HTML',         icon:'https://logo.svgcdn.com/logos/html-5.svg',         cat:'frontend', level:90, projects:['dg','auto','free','tcc'] },
-  { id:'git',     label:'Git',          icon:'https://logo.svgcdn.com/logos/git-icon.svg',       cat:'infra',    level:80, projects:['dg','auto','free','tcc'] },
-  { id:'linux',   label:'Linux',        icon:'https://logo.svgcdn.com/logos/linux-tux.svg',      cat:'infra',    level:70, projects:['aula'] },
-  { id:'django',  label:'Django',       icon:'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/django-icon.png', cat:'backend', level:60, projects:['aula'] },
+  { id:'wp',      label:'WhatsApp API', icon:'https://cdn.simpleicons.org/whatsapp/25D366',       cat:'infra',    level:70, projects:['auto'] },
+  { id:'aws',     label:'AWS',          icon:'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',            cat:'db',       level:65, projects:['aula'] },
+  { id:'docker',  label:'Docker',       icon:'https://cdn.simpleicons.org/docker/2496ED',         cat:'infra',    level:68, projects:['dg','tcc'] },
+  { id:'html',    label:'HTML',         icon:'https://cdn.simpleicons.org/html5/E34F26',         cat:'frontend', level:90, projects:['dg','auto','free','tcc'] },
+  { id:'git',     label:'Git',          icon:'https://cdn.simpleicons.org/git/F05032',       cat:'infra',    level:80, projects:['dg','auto','free','tcc'] },
+  { id:'linux',   label:'Linux',        icon:'https://cdn.simpleicons.org/linux/FCC624',      cat:'infra',    level:70, projects:['aula'] },
+  { id:'django',  label:'Django',       icon:'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/django-icon.png', cat:'backend', level:60, projects:['aula','imex'] },
 ];
 
 const arena = document.getElementById('arena');
@@ -869,6 +872,7 @@ const translations = {
       auto: "AutoAbout",
       free: "Freelances",
       tcc:  "TCC / Pessoal",
+      imex: "Imex Solutions",
     },
     notes: {
       toggle_btn: "Notas do Recrutador",
@@ -954,6 +958,7 @@ const translations = {
       auto: "AutoAbout",
       free: "Freelance",
       tcc:  "Capstone / Personal",
+      imex: "Imex Solutions",
     },
     notes: {
       toggle_btn: "Recruiter Notes",
